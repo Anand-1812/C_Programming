@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -11,6 +12,10 @@
 int main() {
   int s;
   struct sockaddr_in sock;
+  char buff[512];
+  char* data;
+
+  data = "HEAD /HTTP/1.0\n\n";
 
   s = socket(AF_INET, SOCK_STREAM, 0);
   if (s < 0) {
@@ -29,7 +34,12 @@ int main() {
   }
 
   printf("Connected to %s : %d successfully!\n", IP, PORT);
-  close(s);
 
+  write(s, data, strlen(data));
+  read(s, buff, 511);
+
+  printf("\nData: %s\n", buff);
+
+  close(s);
   return 0;
 }
