@@ -19,7 +19,7 @@ int matrixChain(int arr[], int i, int j) {
 }
 
 int main() {
-  int arr[] = {1, 2, 3, 4, 3};
+  int arr[] = {10, 20 ,30, 40};
   int n = sizeof(arr) / sizeof(arr[0]);
 
   for (int i = 0; i < n; i++)
